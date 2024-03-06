@@ -6,12 +6,12 @@
     <VerticalStackLayout>
         <Label 
             Text="Name" />
-        <Entry Text="{Binding Pet.Name}" />
+        <Entry Text="{Binding Food.Name}" />
         <HorizontalStackLayout>
             <Label Text="{Binding Food.Quantity}" WidthRequest="50"/>
             <Stepper Minimum="0" Maximum="100" Increment="1" Value="{Binding Food.Quantity}" />
         </HorizontalStackLayout>
-        <Label Text="DEscription"/>
+        <Label Text="Description"/>
         <Editor Text="{Binding Food.Description}"/>
 
         <Button Text="Save" Command="{Binding SaveCommand}"/>
