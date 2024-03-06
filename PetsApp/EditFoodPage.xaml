@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.EditFoodPage"
+             Title="EditFoodPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Name" />
+        <Entry Text="{Binding Pet.Name}" />
+        <HorizontalStackLayout>
+            <Label Text="{Binding Food.Quantity}" WidthRequest="50"/>
+            <Stepper Minimum="0" Maximum="100" Increment="1" Value="{Binding Food.Quantity}" />
+        </HorizontalStackLayout>
+        <Label Text="DEscription"/>
+        <Editor Text="{Binding Food.Description}"/>
+
+        <Button Text="Save" Command="{Binding SaveCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

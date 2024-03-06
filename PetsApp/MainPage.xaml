@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.MainPage"
+             xmlns:local="clr-namespace:PetsApp"
+             x:DataType="local:MainPageViewModel">
+
+    <Grid RowDefinitions="*,Auto,Auto"  WidthRequest="400">
+        <CollectionView ItemsSource="{Binding Pets}" 
+                SelectedItem="{Binding SelectedPet}"
+                SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:Pet">
+                    <Frame Margin="10">
+                        <VerticalStackLayout>
+                            <Label FontSize="Medium" FontAttributes="Bold" 
+                                   Text="{Binding Name}"/>
+                            <Label FontSize="Small" 
+                                   Text="{Binding Species}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Show Pet Details"
+                Command="{Binding ShowPetDetailsCommand}"
+                Grid.Row="1" Margin="5"/>
+        <Button Text="Add new Pet"
+                Command="{Binding AddNewPetCommand}"
+                Grid.Row="2" Margin="5"/>
+    </Grid>
+
+</ContentPage>
