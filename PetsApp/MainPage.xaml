@@ -12,12 +12,19 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="local:Pet">
                     <Frame Margin="10">
-                        <VerticalStackLayout>
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
                             <Label FontSize="Medium" FontAttributes="Bold" 
                                    Text="{Binding Name}"/>
-                            <Label FontSize="Small" 
+                            <Label Grid.Row="1" FontSize="Small" 
                                    Text="{Binding Species}"/>
-                        </VerticalStackLayout>
+                            <Button Text="Feed" 
+                                    Grid.Column="1"
+                                    Grid.RowSpan="2"
+                                    IsVisible="{Binding BindingContext.IsPetToFeedSelected, Source={RelativeSource AncestorType={x:Type local:MainPage}}}}"
+                                    CommandParameter="{Binding .}" 
+                                    Command="{Binding BindingContext.FeedCommand, Source={RelativeSource AncestorType={x:Type local:MainPage}}}"
+                            />
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

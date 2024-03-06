@@ -6,6 +6,8 @@
              x:DataType="local:FoodPageViewModel"
              Title="FoodPage">
     <VerticalStackLayout>
+        <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" FontAttributes="Bold" 
+                                Text="{Binding PetToFeed.Name, StringFormat='Feeding {0}'}"/>
         <CollectionView ItemsSource="{Binding Foods}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="local:FoodType">
@@ -25,7 +27,9 @@
                             <Button Text="Edit" Grid.Column="2" Grid.Row="0" Margin="3" 
                                     Command="{Binding BindingContext.EditCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
                                     CommandParameter="{Binding .}"/>
-                            <Button Text="Feed" Grid.Column="2" Grid.Row="1" Margin="3"/>
+                            <Button Text="Feed" Grid.Column="2" Grid.Row="1" Margin="3"
+                                    Command="{Binding BindingContext.FeedCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+CommandParameter="{Binding .}"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

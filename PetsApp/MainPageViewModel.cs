@@ -51,5 +51,16 @@ namespace PetsApp
         {
             await Shell.Current.GoToAsync("newpet");
         }
+
+        [RelayCommand]
+        public async Task FeedAsync(Pet pet)
+        {
+            ShellNavigationQueryParameters parm = new ShellNavigationQueryParameters()
+            {
+                {"PetToFeed", pet }
+            };
+
+            await Shell.Current.GoToAsync("//Main/FoodPage", parm);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,9 +9,16 @@ using System.Threading.Tasks;
 
 namespace PetsApp
 {
-    public partial class FoodPageViewModel
+    [QueryProperty(nameof(PetToFeed), "PetToFeed")]
+    public partial class FoodPageViewModel : ObservableObject
     {
         public ObservableCollection<FoodType> Foods { get; set; }
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsPetToFeedSelected))]
+        public Pet petToFeed;
+
+        public bool IsPetToFeedSelected { get => petToFeed != null; }
 
         public FoodPageViewModel()
         {
@@ -35,9 +43,13 @@ namespace PetsApp
 
 
         [RelayCommand]
-        public async Task Feed(object sender)
+        public async Task FeedAsync(FoodType food)
         {
-
+            if(food.Quantity > 0)
+            {
+                this.PetToFeed.LastFedDate = DateTime.Now;
+                food.Quantity--;
+            }
         }
     }
 }

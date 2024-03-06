@@ -8,5 +8,6 @@
                FontSize="Medium"/>
         <Label Text="{Binding Pet.Species,StringFormat='Species: {0}'}" />
         <Label Text="{Binding Pet.BirthDate,StringFormat='Date of Birth: {0}'}" />
+        <Label Text="{Binding Pet.LastFedDate,StringFormat='Last fed: {0}'}" />
     </VerticalStackLayout>
 </ContentPage>

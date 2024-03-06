@@ -17,5 +17,8 @@ namespace PetsApp
 
         [ObservableProperty]
         DateTime birthDate;
+
+        [ObservableProperty]
+        DateTime lastFedDate;
     }
 }
